@@ -11,7 +11,8 @@ try:
     print(Fore.GREEN + 'Using DirectML for GPU acceleration')
 except ImportError:
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-print('Using device:', device)
+print('Using device:', device,f'{type(device)}')
+torch_directml._initialized = True
 
 from transformers import AutoModelForCausalLM, TrainingArguments, Trainer, DataCollatorForSeq2Seq
 import os
